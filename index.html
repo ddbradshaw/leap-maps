@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="reset.css" />
+	<style>
+		html, body { font-family: 'Fuller Sans', Helvetica, Arial, 'Lucida Grande', sans-serif; width: 100%; height: 100%; position: relative; }
+		#map { position: absolute; width: 100%; height: 100%; }
+		#canvas { position: absolute; z-index: 100; }
+		#debug { position: absolute; top: 0px; right: 0px; padding: 10px; background-color: #ffffff}
+	</style>
+
+	
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+
+	<script src="map.js"></script>
+	<script src="leap.js"></script>
+	<script src="leap-controller.js"></script>
+
+	<script>
+		var m = null;
+
+		function init() 
+		{
+			m = new Map("map");
+			var lc = new LeapController(m.map,  "canvas", "debug");
+			lc.init();
+		}
+
+		$(window).load(function() {
+		     init();
+		});
+
+	</script>
+</head>
+
+<body id="body">
+	<div id="map"></div>
+	<canvas id="canvas"></canvas>
+	<div id="debug"></div>
+</body>
+</html>
